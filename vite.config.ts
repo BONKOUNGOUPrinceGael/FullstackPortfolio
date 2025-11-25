@@ -19,6 +19,7 @@ export default defineConfig({
         ]
       : []),
   ],
+  base:process.env.VITE_BASE_PATH || "/Portfolio Fullstack",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
