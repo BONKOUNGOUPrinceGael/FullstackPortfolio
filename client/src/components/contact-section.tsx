@@ -53,26 +53,26 @@ export function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "contact@example.com",
-      href: "mailto:contact@example.com",
+      value: "princegaelb@gmail.com",
+      href: "mailto:princegaelb@gmail.com",
     },
     {
       icon: MapPin,
       label: "Localisation",
-      value: "Paris, France",
+      value: "Ouagadougou, Burkina Faso",
       href: null,
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "/votre-profil",
-      href: "https://linkedin.com",
+      value: "/prince-bonkoungou",
+      href: "https://linkedin.com/in/prince-bonkoungou/",
     },
     {
       icon: Github,
       label: "GitHub",
-      value: "@votreprofil",
-      href: "https://github.com",
+      value: "@BONKOUNGOUPrinceGael",
+      href: "https://github.com/BONKOUNGOUPrinceGael",
     },
   ];
 

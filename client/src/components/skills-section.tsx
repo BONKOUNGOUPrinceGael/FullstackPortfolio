@@ -6,17 +6,13 @@ import {
   SiNodedotjs, 
   SiTypescript, 
   SiTailwindcss,
-  SiNextdotjs,
   SiVuedotjs,
-  SiExpress,
-  SiMongodb,
   SiPostgresql,
-  SiDocker,
   SiGit,
   SiFigma,
-  SiJest,
-  SiRedis,
-  SiGraphql
+  SiPostman,
+  SiLinux,
+  SiMysql
 } from "react-icons/si";
 
 export function SkillsSection() {
@@ -24,32 +20,27 @@ export function SkillsSection() {
     {
       title: "Frontend",
       skills: [
-        { name: "React / Next.js", level: 95, icon: SiReact },
-        { name: "TypeScript", level: 90, icon: SiTypescript },
-        { name: "Vue.js", level: 85, icon: SiVuedotjs },
-        { name: "Tailwind CSS", level: 90, icon: SiTailwindcss },
-        { name: "Next.js", level: 88, icon: SiNextdotjs },
+        { name: "TypeScript", level: 76, icon: SiTypescript },
+        { name: "Vue.js", level: 82, icon: SiVuedotjs },
+        { name: "Tailwind CSS", level: 68, icon: SiTailwindcss },
+        { name: "React / Next.js", level: 55, icon: SiReact },
       ],
     },
     {
       title: "Backend",
-      skills: [
-        { name: "Node.js", level: 92, icon: SiNodedotjs },
-        { name: "Express.js", level: 90, icon: SiExpress },
-        { name: "PostgreSQL", level: 85, icon: SiPostgresql },
-        { name: "MongoDB", level: 82, icon: SiMongodb },
-        { name: "GraphQL", level: 80, icon: SiGraphql },
+      skills: [        
+        { name: "Mysql", level: 69, icon: SiMysql },
+        { name: "Node.js", level: 54, icon: SiNodedotjs },
+        { name: "PostgreSQL", level: 60, icon: SiPostgresql },
       ],
     },
     {
-      title: "Outils & DevOps",
+      title: "Architecture & DevOps",
       skills: [
-        { name: "Git / GitHub", level: 95, icon: SiGit },
-        { name: "Docker", level: 85, icon: SiDocker },
-        { name: "AWS / Cloud", level: 75, icon: Cloud },
-        { name: "Jest / Testing", level: 88, icon: SiJest },
-        { name: "Redis", level: 78, icon: SiRedis },
-        { name: "Figma", level: 82, icon: SiFigma },
+        { name: "Git / GitHub", level: 80, icon: SiGit },
+        { name: "API REST", level: 65, icon: SiPostman},
+        { name: "Linux", level: 70, icon: SiLinux },
+        { name: "Figma", level: 61, icon: SiFigma },
       ],
     },
   ];
@@ -155,16 +146,15 @@ useEffect(() => {
               </h3>
               <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                 {[
+                  "Gestion de Projets",
                   "REST APIs",
-                  "WebSockets",
-                  "CI/CD",
+                  "Tests Unitaires",
                   "Agile/Scrum",
                   "Responsive Design",
                   "SEO",
                   "Accessibilité",
-                  "Performance Web",
+                  "Sécurité Web",
                   "Microservices",
-                  "TDD",
                 ].map((skill, index) => (
                   <span
                     key={index}

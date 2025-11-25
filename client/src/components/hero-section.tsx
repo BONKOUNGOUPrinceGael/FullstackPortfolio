@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import heroImage from "@assets/generated_images/Professional_developer_workspace_hero_dc7de376.png";
 import { useEffect, useState, useRef } from "react";
+import { useLocation } from "wouter";
 
 export function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
+  const [, navigate] = useLocation();
   const rafRef = useRef<number>();
 
   useEffect(() => {
@@ -76,11 +78,11 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => scrollToSection("contact")}
+                onClick={() => navigate("/cv")}
                 data-testid="button-download-cv"
               >
-                <Download className="mr-2 h-4 w-4" />
-                Télécharger CV
+                <BookOpen className="mr-2 h-4 w-4" />
+                Voir mon CV
               </Button>
             </div>
           </div>

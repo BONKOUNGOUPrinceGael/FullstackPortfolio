@@ -1,64 +1,70 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
-import ecommerceImg from "@assets/generated_images/E-commerce_platform_project_a4df9093.png";
-import taskMgmtImg from "@assets/generated_images/Task_management_app_project_28456175.png";
-import analyticsImg from "@assets/generated_images/Analytics_dashboard_project_e271a1c1.png";
-import realEstateImg from "@assets/generated_images/Real_estate_platform_project_f96373bb.png";
+import { ExternalLink } from "lucide-react";
+import { useState } from "react";
 import foodDeliveryImg from "@assets/generated_images/Food_delivery_app_project_eef7c447.png";
-import fitnessImg from "@assets/generated_images/Fitness_tracker_project_e7e8fcfb.png";
+import apiRestImg from "@assets/generated_images/api_rest_mobile_backend_project.png";
+import codeCraftImg from "@assets/generated_images/codecraft_studio_freelancer_portfolio.png";
+import discoverBurkinaImg from "@assets/generated_images/discover_burkina_tourism_site.png";
+import digitalLabImg from "@assets/generated_images/digital_lab_academy_school_website.png";
+import hrSystemImg from "@assets/generated_images/hr_management_system_application.png";
 
 export function ProjectsSection() {
+  const [selectedTechnology, setSelectedTechnology] = useState<string | null>(null);
   const featuredProject = {
-    title: "Plateforme E-commerce",
-    description: "Boutique en ligne complète avec gestion des produits, panier d'achat et paiement sécurisé. Interface moderne et optimisée pour les conversions avec tableau de bord d'administration avancé, gestion des stocks en temps réel et intégration de multiples passerelles de paiement.",
-    image: ecommerceImg,
-    tags: ["React", "Node.js", "Stripe", "MongoDB", "Redis", "AWS"],
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "Système de Gestion RH",
+    description: "Application de gestion des ressources humaines avec suivi des employés, congés et évaluations. Solution complète pour la gestion administrative du personnel avec reporting avancé et tableaux de bord d'analyse.",
+    image: hrSystemImg,
+    tags: ["React", "TypeScript", "Tailwind CSS", "PDF", "Email"],
+    demoUrl: "https://ad5jxven5g.skywork.website/",
   };
 
   const projects = [
     {
-      title: "Gestionnaire de Tâches",
-      description: "Application de gestion de projets avec tableau Kanban, collaboration en temps réel et notifications.",
-      image: taskMgmtImg,
-      tags: ["Vue.js", "Express", "Socket.io", "PostgreSQL"],
-      demoUrl: "#",
-      githubUrl: "#",
+      title: "CodeCraft Studio",
+      description: "Site vitrine professionnel pour développeur freelance avec portfolio, services et contact.",
+      image: codeCraftImg,
+      tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      badge: "Portfolio",
+      status: "Terminée",
+      demoUrl: "https://7axcn9yebb.skywork.website/",
     },
     {
-      title: "Dashboard Analytics",
-      description: "Tableau de bord analytique pour visualiser les métriques clés avec graphiques interactifs.",
-      image: analyticsImg,
-      tags: ["React", "TypeScript", "Chart.js", "REST API"],
-      demoUrl: "#",
-      githubUrl: "#",
+      title: "Discover Burkina",
+      description: "Site de tourisme local présentant les lieux touristiques du Burkina Faso avec galeries d'images.",
+      image: discoverBurkinaImg,
+      tags: ["React", "TypeScript", "Tailwind CSS", "Image Gallery"],
+      badge: "Tourism",
+      status: "Terminée",
+      demoUrl: "https://ebzmcpq8er.skywork.website/",
     },
     {
-      title: "Portail Immobilier",
-      description: "Plateforme de recherche immobilière avec filtres avancés et carte interactive.",
-      image: realEstateImg,
-      tags: ["Next.js", "Tailwind", "Mapbox", "Prisma"],
-      demoUrl: "#",
-      githubUrl: "#",
+      title: "Digital Lab Academy",
+      description: "Site web pour établissement scolaire avec gestion des cours, étudiants et ressources pédagogiques.",
+      image: digitalLabImg,
+      tags: ["React", "TypeScript", "Tailwind CSS", "CMS"],
+      badge: "Education",
+      status: "Terminée",
+      demoUrl: "https://r4gaz56tts.skywork.website/",
     },
     {
       title: "Application Livraison",
       description: "App mobile-first pour commander des repas avec suivi en temps réel.",
       image: foodDeliveryImg,
       tags: ["React Native", "Firebase", "Google Maps", "Stripe"],
+      badge: "Mobile-First",
+      status: "En cours",
       demoUrl: "#",
-      githubUrl: "#",
     },
     {
-      title: "Tracker Fitness",
-      description: "Application de suivi d'entraînement avec calendrier et graphiques de progression.",
-      image: fitnessImg,
-      tags: ["React", "Node.js", "Chart.js", "MySQL"],
+      title: "API REST pour Mobile",
+      description: "Développement d'une API REST robuste pour application mobile avec authentification JWT et documentation complète.",
+      image: apiRestImg,
+      tags: ["Node.js", "Express", "JWT", "PostgreSQL", "Swagger"],
+      badge: "Backend",
+      status: "En cours",
       demoUrl: "#",
-      githubUrl: "#",
     },
   ];
 
@@ -115,20 +121,40 @@ export function ProjectsSection() {
                       Demo
                     </a>
                   </Button>
-                  <Button variant="outline" asChild data-testid="button-featured-github">
-                    <a href={featuredProject.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </a>
-                  </Button>
                 </div>
               </CardContent>
             </div>
           </Card>
         </div>
 
+        <div className="max-w-6xl mx-auto mb-8 md:mb-12">
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant={selectedTechnology === null ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSelectedTechnology(null)}
+              data-testid="button-filter-all"
+            >
+              Tous
+            </Button>
+            {Array.from(new Set(projects.flatMap(p => p.tags))).map((tech) => (
+              <Button
+                key={tech}
+                variant={selectedTechnology === tech ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedTechnology(tech)}
+                data-testid={`button-filter-${tech}`}
+              >
+                {tech}
+              </Button>
+            ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 gap-8 md:gap-12 max-w-6xl mx-auto">
-          {projects.map((project, index) => {
+          {projects.filter(project => 
+            selectedTechnology === null || project.tags.includes(selectedTechnology)
+          ).map((project, index) => {
             const isImageLeft = index % 2 === 0;
             return (
               <Card
@@ -146,6 +172,22 @@ export function ProjectsSection() {
                     />
                   </div>
                   <CardContent className="p-6 md:p-8 flex flex-col justify-center">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {project.badge && (
+                        <Badge className="w-fit" variant="secondary" data-testid={`badge-project-${index}`}>
+                          {project.badge}
+                        </Badge>
+                      )}
+                      {project.status && (
+                        <Badge 
+                          className="w-fit" 
+                          variant={project.status === "Terminée" ? "default" : "secondary"}
+                          data-testid={`badge-status-${index}`}
+                        >
+                          {project.status}
+                        </Badge>
+                      )}
+                    </div>
                     <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
                       {project.title}
                     </h3>
@@ -173,17 +215,6 @@ export function ProjectsSection() {
                         <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
                           Demo
-                        </a>
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        asChild
-                        data-testid={`button-github-${index}`}
-                      >
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="mr-2 h-4 w-4" />
-                          Code
                         </a>
                       </Button>
                     </div>
