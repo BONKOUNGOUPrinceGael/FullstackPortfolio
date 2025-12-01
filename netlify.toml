@@ -1,20 +1,22 @@
 [build]
   command = "npm run build"
-  functions = "netlify/functions"
   publish = "dist/public"
-
-[build.environment]
-  # Build variables - sensitive vars should be set in Netlify UI
-  VITE_API_URL = "https://your-backend-url.onrender.com"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
 [[headers]]
-  for = "/*"
+  for = "/assets/*"
   [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
