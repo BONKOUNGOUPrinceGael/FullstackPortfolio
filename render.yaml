@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: portfolio-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RESEND_API_KEY
+        scope: build,runtime
+      - key: REPLIT_CONNECTORS_HOSTNAME
+        scope: build,runtime
+      - key: REPL_IDENTITY
+        scope: build,runtime
+
+# Instructions to add:
+# 1. Go to https://render.com
+# 2. Connect your GitHub repository
+# 3. Create a new Web Service
+# 4. Select "Node" as the runtime
+# 5. Set Build Command: npm install
+# 6. Set Start Command: npm start
+# 7. Add environment variables in Render dashboard:
+#    - RESEND_API_KEY: Your Resend API key
+#    - NODE_ENV: production
+# 8. Deploy
+# 9. Copy the service URL (e.g., https://your-service.onrender.com)
+# 10. Update VITE_API_URL in Netlify with this URL

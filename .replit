@@ -15,10 +15,6 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 39703
-externalPort = 3001
-
-[[ports]]
 localPort = 45293
 externalPort = 3000
 
@@ -48,3 +44,9 @@ waitForPort = 5000
 
 [agent]
 integrations = ["resend:1.0.0"]
+
+[userenv]
+
+[userenv.shared]
+VITE_APP_NAME = "Portfolio Prince Gaël"
+VITE_API_URL = "http://localhost:5000"
